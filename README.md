@@ -1,0 +1,1 @@
+# twoday-si26-ai-kurs
