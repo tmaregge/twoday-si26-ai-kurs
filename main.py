@@ -1,5 +1,8 @@
+import streamlit as st
+
+
 def main():
-    print("Hello from twoday-si26-ai-kurs!")
+    st.write("Hello world")
 
 
 if __name__ == "__main__":
