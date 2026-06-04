@@ -1,0 +1,15 @@
+#+TITLE: TODO 
+
+* TODO Lag vertical slice
+* TODO Lag oppgaver
+** TODO OpenAI service
+*** TODO Informer SI-er om API-et
+https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses?tabs=python#generate-a-text-response
+** TODO AI Search
+*** TODO Lag index
+https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
+*** TODO Last opp chunks
+https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
+* TODO Lag fasit (branch?)
+
+
