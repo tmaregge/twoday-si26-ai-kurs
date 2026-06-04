@@ -1,44 +1,20 @@
-from azure.core.credentials import AzureKeyCredential
-from azure.ai.documentintelligence import DocumentIntelligenceClient
-from azure.ai.documentintelligence.models import AnalyzeOutputOption, AnalyzeResult
-
-from dotenv import load_dotenv
-
-import streamlit as st
-import os
-
-load_dotenv()
-
-di_endpoint = os.environ["DI_ENDPOINT"]
-di_key = os.environ["DI_KEY"]
-
-di_credential = AzureKeyCredential(di_key)
-
-di_client = DocumentIntelligenceClient(di_endpoint, di_credential)
-
-document_path = "documents/personalhandbok-twoday.pdf"
-output_dir = "outputs"
+import argparse
+from src.chat import chat
+from src.ingest import ingest
+from src.retrieve import retrieve
 
 
-def analyze_document():
-    with open(document_path, "rb") as f:
-        poller = di_client.begin_analyze_document(
-            "prebuilt-read",
-            body=f,
-            output=[AnalyzeOutputOption.PDF],
-        )
-        result: AnalyzeResult = poller.result()
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("mode", choices=["chat", "ingest", "retrieve"])
+    args = parser.parse_args()
 
-        return result
-
-
-def main():
-    if st.button("Analyze document"):
-        result = analyze_document()
-
-        if st.button("Show result"):
-            st.write(result)
-            print(result)
+    if args.mode == "chat":
+        chat()
+    elif args.mode == "ingest":
+        ingest()
+    elif args.mode == "retrieve":
+        retrieve()
 
 
 if __name__ == "__main__":
