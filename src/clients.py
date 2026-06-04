@@ -25,4 +25,18 @@ oai_client = OpenAI(base_url=oai_endpoint, api_key=oai_key)
 search_endpoint = os.environ["AZURE_SEARCH_SERVICE_ENDPOINT"]
 search_key = os.environ["AZURE_SEARCH_API_KEY"]
 index_name = os.environ["AZURE_SEARCH_INDEX_NAME"]
-search_client = SearchClient(search_endpoint, index_name, AzureKeyCredential(key))
+search_client = SearchClient(
+    search_endpoint, index_name, AzureKeyCredential(search_key)
+)
+
+
+def get_di_client():
+    return di_client
+
+
+def get_oai_client():
+    return oai_client
+
+
+def get_search_client():
+    return search_client
