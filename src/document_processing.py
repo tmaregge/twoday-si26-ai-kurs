@@ -2,34 +2,37 @@ import json
 from src.clients import get_di_client
 
 
-data_path = "src/data"
-pdf_path = f"{data_path}/personalhandbok-twoday.pdf"
-scanned_json_path = f"{data_path}/scanned.json"
 
-
-def ingest():
+def ingest(pdf_path: str, out_path: str = "") -> str:
     client = get_di_client()
 
     with open(pdf_path, "rb") as f:
         poller = client.begin_analyze_document(model_id="prebuilt-layout", body=f)
 
     result = poller.result()
-    text = result.content
 
-    with open(scanned_json_path, "w", encoding="utf-8") as f:
-        json.dump(
-            result.as_dict(),
-            f,
-            ensure_ascii=False,
-            indent=2,
+    if out_path:
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(
+                result.as_dict(),
+                f,
+                ensure_ascii=False,
+                indent=2,
         )
 
-    print(text)
-    return text
+    return result
 
 
-def chunk():
-    with open(scanned_json_path, "r") as f:
-        scanned = json.load(f)
-
-    return scanned
+# Returnerer en liste med chunks (JSON) som kan indekseres i Azure AI Search
+def chunk(parsed_document: dict, document_id: str, chunk_size: int = 100) -> list:
+    chunks = []
+    for paragraph in parsed_document.paragraphs:
+        content = paragraph.content
+        for i in range(0, len(content), chunk_size):
+            chunk = {
+                "chunkId": f"{document_id}_{i}",
+                "documentId": document_id,
+                "content": content[i:i+chunk_size]
+            }
+            chunks.append(chunk)
+    return chunks

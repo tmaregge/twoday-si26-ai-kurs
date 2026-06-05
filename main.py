@@ -1,7 +1,7 @@
 import argparse
 from src.chat import chat
 from src.document_processing import ingest, chunk
-from src.retrieve import retrieve
+from src.retrieval import retrieve
 
 
 def main() -> None:

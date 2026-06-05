@@ -2,6 +2,9 @@
 
 * TODO Lag vertical slice
 * TODO Lag oppgaver
+** TODO Bonusoppgaver
+Koble indexer til blob storage. Gjør det mulig å laste opp dokument til blob storage først og sync med AI Search. Ha med metadata tags for å skille brukere.
+
 ** TODO OpenAI service
 *** TODO Informer SI-er om API-et
 https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses?tabs=python#generate-a-text-response
@@ -10,6 +13,16 @@ https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses?tabs=pyt
 https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
 *** TODO Last opp chunks
 https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
+*** TODO Bonus: Legg til semantic search
 * TODO Lag fasit (branch?)
+* TODO Lag installasjonsguide
+** TODO Setup
+Installer uv
+uv sync
+uv run main.py
+uv run streamlit run ui.py
+** TODO Lag readme
+
+
 
 
