@@ -9,6 +9,8 @@ Koble indexer til blob storage. Gjør det mulig å laste opp dokument til blob s
 *** TODO Informer SI-er om API-et
 https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses?tabs=python#generate-a-text-response
 ** TODO AI Search
+Man trenger egentlig ikke lure
+https://github.com/Azure/azure-search-vector-samples/tree/main/demo-python
 *** TODO Lag index
 https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
 *** TODO Last opp chunks
