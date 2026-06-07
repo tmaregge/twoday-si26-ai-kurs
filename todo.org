@@ -17,15 +17,20 @@ https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-rea
 https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
 
 Legg til tags (markere bruker feks.)
-*** TODO Bonus: Legg til semantic search
-* TODO Lag fasit (branch?)
-* TODO Lag installasjonsguide
-** TODO Setup
+*** DONE Bonus: Legg til semantic search
+CLOSED: [2026-06-07 Sun 21:27]
+* DONE Lag fasit (branch?)
+CLOSED: [2026-06-07 Sun 21:27]
+* DONE Lag installasjonsguide
+CLOSED: [2026-06-07 Sun 21:27]
+** DONE Setup
+CLOSED: [2026-06-07 Sun 21:27]
 Installer uv
 uv sync
 uv run main.py
 uv run streamlit run ui.py
-** TODO Lag readme
+** DONE Lag readme
+CLOSED: [2026-06-07 Sun 21:27]
 
 
 

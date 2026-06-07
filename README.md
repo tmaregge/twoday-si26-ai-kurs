@@ -10,7 +10,7 @@ cd twoday-si26-ai-kurs
 
 Installer pakker
 ```
-uv install
+uv sync
 ```
 
 <details>

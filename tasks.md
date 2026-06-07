@@ -102,6 +102,12 @@ print(len(chunks))
 print(chunks[0])
 ```
 
+### Nyttige lenker:
+
+https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
+
+https://github.com/Azure/azure-search-vector-samples/tree/main/demo-python
+
 ---
 
 # Oppgave 3: Opprett en søkeindeks
@@ -115,6 +121,9 @@ create_index(index_name)
 ```
 
 Metoden må inneholde et schema som definerer hva slags innhold hvert dokument (chunk) som lastes opp til indeksen skal inneholde.
+
+### Nyttige lenker
+
 
 ### Refleksjon
 
@@ -189,6 +198,10 @@ Eksempel:
 answer = chat(question, context)
 ```
 
+### Nyttige lenker
+
+https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses?tabs=python#generate-a-text-response
+
 ---
 
 # Oppgave 7: Sett alt sammen
@@ -256,13 +269,15 @@ Vis:
 
 Bruk modellen `text-embedding-3-large` for å lage en vektor-embedding av chunk-innholdet. Modifiser indeksen til å ta i bruk dette feltet for vektorsøk/semantisk søk.
 
-# Bonus 3: Forbedre kvaliteten
+# Bonus 3: Forbedre chunking
 
-Eksperimenter med:
+Ta en titt på dokumentasjonen og implementer en ny chunking-metode
+https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-chunk-documents
 
-- ulike chunking-strategier
-- prompten
-- metadata
+Man kan for eksempel eksperimentere med
+- Ulike chunk sizes
+- Overlap mellom chunks (f.eks. 25%)
+- Semantisk chunking
 
 ### Refleksjon
 
@@ -292,3 +307,10 @@ NB: For å implementere dette må du kanskje modifisere schema og chunking, samt
 # Bonus 5: Filopplasting
 
 Modifiser grensesnittet til å la brukeren laste opp dokumenter, som så blir prosessert og indeksert og gjort tilgjengelig for søk. Legg til muligheten til å velge hvilke dokumenter det søkes i (dette krever at `filterable=True` for dokumentId-feltet i index schema).
+
+
+# Bonus 6: Blob storage for lagring av dokumenter
+
+Koble opp systemet til blob storage, slik at dokumenter lastet opp havner der. Legg til en referanse til blob-en for et gitt dokument i schema i indeksen. Bruk blob storage som "knowledge source" i 
+
+Gjør så PDF-en til vises i grensesnittet når man får resultatene (`st.pdf`).
