@@ -6,6 +6,25 @@ Målet med kurset er å lage en RAG-løsning med et enkelt grensesnitt hvor man 
 
 Vi bygger komponentene hver for seg før hvis vi kobler dem sammen. Vi starter med å lage et veldig enkelt system som vi forbedrer iterativt når alt er på plass.
 
+Flyten blir som følger
+```
+PDF
+ ↓
+Ingest # Hent tekst fra PDF
+ ↓
+Chunk # Splitt tekst i mindre bolker
+ ↓
+Index # Last opp chunks til søkeindeksen
+ ↓
+Search # Søk i chunks
+ ↓
+Context # Bruk resultat som kontekst i LLM
+ ↓
+LLM # 
+ ↓
+Answer
+```
+
 ## Prosjektstruktur
 
 De viktigste filene i projektet er følgende:
@@ -150,6 +169,10 @@ Implementer:
 chat(question, context)
 ```
 
+Funksjonen tar inn et spørsmål og tilhørende context (søkeresultater) og genererer et svar.
+
+NB: Bruk `model="gpt-5.4-mini"`
+
 Lag en prompt som inneholder:
 
 - system prompt
@@ -161,14 +184,6 @@ Eksempel:
 ```python
 answer = chat(question, context)
 ```
-
-### Refleksjon
-
-Hva skjer dersom:
-
-- vi ikke sender med kontekst?
-- vi sender med irrelevante chunks?
-- vi sender med for mange chunks?
 
 ---
 
@@ -200,16 +215,18 @@ Spørsmål
     ↓
 Search
     ↓
-Chunks
-    ↓
 Prompt
     ↓
-GPT
+LLM
     ↓
 Svar
 ```
 
-Dette er en komplett RAG-løsning.
+Etter denne oppgaven har vi en komplett RAG-løsning!
+
+# Bonusoppgaver
+
+Nå som vi har det grunnleggende systemet på plass kan vi jobbe med å forbedre det. Hva du gjør er opp til deg. Under er noen eksempler på ting man kan gjøre.
 
 ---
 
@@ -231,12 +248,15 @@ Vis:
 
 ---
 
-# Bonus 2: Forbedre kvaliteten
+# Bonus 2: Legg til vektorsøk
+
+Bruk modellen `text-embedding-3-large` for å lage en vektor-embedding av chunk-innholdet. Modifiser indeksen til å ta i bruk dette feltet for vektorsøk/semantisk søk.
+
+# Bonus 3: Forbedre kvaliteten
 
 Eksperimenter med:
 
 - ulike chunking-strategier
-  - hei
 - prompten
 - metadata
 
@@ -248,7 +268,7 @@ Hvorfor?
 
 ---
 
-# Bonus 3: Legg til kilder
+# Bonus 4: Legg til kilder
 
 Vis hvilke chunks eller sider som ble brukt til å generere svaret.
 
@@ -265,6 +285,6 @@ Kilder:
 
 NB: For å implementere dette må du kanskje modifisere schema og chunking, samt reindeksere dokumentene.
 
-# Bonus 4: Filopplasting
+# Bonus 5: Filopplasting
 
 Modifiser grensesnittet til å la brukeren laste opp dokumenter, som så blir prosessert og indeksert og gjort tilgjengelig for søk. Legg til muligheten til å velge hvilke dokumenter det søkes i (dette krever at `filterable=True` for dokumentId-feltet i index schema).
