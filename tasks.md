@@ -18,9 +18,9 @@ Index # Last opp chunks til søkeindeksen
  ↓
 Search # Søk i chunks
  ↓
-Context # Bruk resultat som kontekst i LLM
+Context # Formater resultatene som LLM-kontekst
  ↓
-LLM # 
+LLM # Mat inn context og spørsmål i LLM
  ↓
 Answer
 ```
@@ -42,6 +42,10 @@ Oppgavene utføres ved å implementere funksjoner i `rag.py` som så skal kobles
 `explore.ipynb` kan brukes for å utvikle funksjonene iterativt før man eventuelt limer dem inn i `rag.py`. Enkelte handlinger, som å opprette indeks og laste opp dokumenter er også enklere å utføre i en notebook enn via vanlige kildefiler (etter min mening).
 
 ## Oppgaver
+
+### Oppgave 0: Koble opp tjenestene
+
+Vi bruker API-nøkler for å koble oss til tjenestene. Dere får tilsendt en `.env`-fil som dere må legge i roten av prosjektet. Når dette er gjort kan du kjøre `uv run clients.py` for å verifisere at tilkoblingen var vellykket.
 
 ---
 
