@@ -1,1 +1,31 @@
-# twoday-si26-ai-kurs
+# RAG-kurs
+
+## Installasjon
+
+Last ned repo
+```
+git clone https://github.com/tmaregge/twoday-si26-ai-kurs.git
+cd twoday-si26-ai-kurs
+```
+
+Installer pakker
+```
+uv install
+```
+
+<details>
+<summary><strong>NB: uv installasjon</strong></summary>
+
+Hvis du ikke har `uv` installert, kan du laste det ned her:  
+https://docs.astral.sh/uv/#installation
+
+</details>
+
+Kjør streamlit-frontend:
+```
+uv run streamlit run ui.py
+```
+
+## Oppgaver
+
+Gå til [tasks.md](tasks.md) for oppgavene.
