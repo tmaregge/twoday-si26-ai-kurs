@@ -4,7 +4,7 @@
 
 Målet med kurset er å lage en RAG-løsning med et enkelt grensesnitt hvor man kan stille spørsmål om innholdet i dokumenter.
 
-Vi bygger komponentene hver for seg før hvis vi kobler dem sammen. Vi starter med å lage et veldig enkelt system som vi forbedrer iterativt når alt er på plass.
+Vi bygger komponentene hver for seg før vi kobler dem sammen. Vi starter med å lage et veldig enkelt system som vi forbedrer iterativt når alt er på plass.
 
 Flyten blir som følger
 ```
