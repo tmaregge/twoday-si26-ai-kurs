@@ -15,6 +15,8 @@ https://github.com/Azure/azure-search-vector-samples/tree/main/demo-python
 https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
 *** TODO Last opp chunks
 https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
+
+Legg til tags (markere bruker feks.)
 *** TODO Bonus: Legg til semantic search
 * TODO Lag fasit (branch?)
 * TODO Lag installasjonsguide

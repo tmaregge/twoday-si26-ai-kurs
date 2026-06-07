@@ -10,6 +10,7 @@ dependencies = [
     "azure-search-documents>=12.0.0",
     "azure-storage-blob>=12.29.0",
     "openai>=2.38.0",
+    "pypdf>=6.13.0",
     "python-dotenv>=1.2.2",
     "streamlit[pdf]>=1.58.0",
 ]

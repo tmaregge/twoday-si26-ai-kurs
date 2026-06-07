@@ -1,23 +1,11 @@
-import argparse
+from src.clients import get_search_client
 from src.chat import chat
-from src.document_processing import ingest, chunk
-from src.retrieval import retrieve
+from src.document_processing import ingest, chunk, ingest_pypdf
+from src.retrieval import get_index, retrieve
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["chat", "ingest", "chunk", "retrieve"])
-    args = parser.parse_args()
+scanned = ingest_pypdf("src/data/personalhandbok-twoday.pdf", "src/data/scanned.json")
+# chunks = chunk(scanned, "personalhandbok-twoday.pdf")
 
-    if args.mode == "chat":
-        chat()
-    elif args.mode == "ingest":
-        ingest()
-    elif args.mode == "chunk":
-        chunk()
-    elif args.mode == "retrieve":
-        retrieve()
-
-
-if __name__ == "__main__":
-    main()
+# index = get_index("idx-torstein")
+# search_client = get_search_client()

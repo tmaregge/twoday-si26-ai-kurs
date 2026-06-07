@@ -1,38 +1,35 @@
 import json
-from src.clients import get_di_client
+from pypdf import PdfReader
 
 
+def ingest_pypdf(pdf_path: str, out_path: str = ""):
+    reader = PdfReader(pdf_path)
 
-def ingest(pdf_path: str, out_path: str = "") -> str:
-    client = get_di_client()
+    pages = []
+    all_text = []
 
-    with open(pdf_path, "rb") as f:
-        poller = client.begin_analyze_document(model_id="prebuilt-layout", body=f)
+    for page_num, page in enumerate(reader.pages, start=1):
+        text = page.extract_text() or ""
+        text = text.strip()
 
-    result = poller.result()
+        pages.append(
+            {
+                "pageNumber": page_num,
+                "content": text,
+            }
+        )
+        if text:
+            all_text.append(text)
+
+    result = {
+        "content": "\n\n".join(all_text),
+        "pages": pages,
+    }
 
     if out_path:
         with open(out_path, "w", encoding="utf-8") as f:
-            json.dump(
-                result.as_dict(),
-                f,
-                ensure_ascii=False,
-                indent=2,
-        )
+            json.dump(result, f, ensure_ascii=False, indent=2)
 
     return result
 
 
-# Returnerer en liste med chunks (JSON) som kan indekseres i Azure AI Search
-def chunk(parsed_document: dict, document_id: str, chunk_size: int = 100) -> list:
-    chunks = []
-    for paragraph in parsed_document.paragraphs:
-        content = paragraph.content
-        for i in range(0, len(content), chunk_size):
-            chunk = {
-                "chunkId": f"{document_id}_{i}",
-                "documentId": document_id,
-                "content": content[i:i+chunk_size]
-            }
-            chunks.append(chunk)
-    return chunks
