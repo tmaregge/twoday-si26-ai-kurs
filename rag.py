@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-
-def ingest_pypdf(pdf_path: str, out_path: str = ""):
+def ingest_pypdf(pdf_path: str, out_path: str = "") -> str:
     ...
 
-def ingest_di(pdf_path: str, out_path: str = ""):
+def ingest_di(pdf_path: str, out_path: str = "") -> AnalyzeResult:
     ...
 
 def chunk(document):
@@ -24,3 +22,5 @@ def chat(question: str, context: str):
 def ask(question: str, document_id: str = ""):
     ...
     
+def embed(text):
+    ...
