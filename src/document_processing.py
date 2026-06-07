@@ -33,3 +33,36 @@ def ingest_pypdf(pdf_path: str, out_path: str = ""):
     return result
 
 
+def chunk(
+    text: str,
+    document_id: str,
+    size: int = 1200,
+    overlap: int = 200,
+) -> list[dict]:
+    if not text:
+        return []
+
+    chunks = []
+    start = 0
+    step = max(1, size - overlap)
+    chunk_idx = 0
+
+    while start < len(text):
+        end = start + size
+        current = text[start:end].strip()
+
+        if current:
+            chunks.append(
+                {
+                    "chunkId": f"{document_id}_{chunk_idx}",
+                    "documentId": document_id,
+                    "content": current,
+                }
+            )
+            chunk_idx += 1
+
+        if end >= len(text):
+            break
+        start += step
+
+    return chunks
