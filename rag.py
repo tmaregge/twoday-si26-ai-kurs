@@ -8,6 +8,22 @@ def chunk(document):
     ...
 
 def create_index(index_name: str):
+    fields = [
+            SimpleField(
+                name="chunk_id",
+                type=SearchFieldDataType.String,
+                key=True,
+            ),
+            SimpleField(
+                name="document_id",
+                type=SearchFieldDataType.String,
+                filterable=True,
+            ),
+            SearchableField(
+                name="content",
+                type=SearchFieldDataType.String,
+            ),
+        ]
     ...
 
 def index_chunks(chunks: list[dict], index_name: str):
