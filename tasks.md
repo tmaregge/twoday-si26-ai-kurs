@@ -7,6 +7,7 @@ Målet med kurset er å lage en RAG-løsning med et enkelt grensesnitt hvor man 
 Vi bygger komponentene hver for seg før vi kobler dem sammen. Vi starter med å lage et veldig enkelt system som vi forbedrer iterativt når alt er på plass.
 
 Flyten blir som følger
+
 ```
 PDF
  ↓
@@ -29,13 +30,13 @@ Answer
 
 De viktigste filene i projektet er følgende:
 
-| File | Beskrivelse |Notat|
-|------|-------------|-------|
-| `rag.py` | Byggeklossene i RAG-systemet vårt |  |
-| `explore.ipynb` | Jupyter notebook for å jobbe iterativt |  |
-| `main.py` | Kan brukes for å koble sammen komponenter | `uv run main.py` |
-| `ui.py` | Grensesnitt i `streamlit` | `uv run streamlit run ui.py` |
-| `clients.py` | Inneholder klienter for å koble seg mot de ulike tjenestene|
+| File            | Beskrivelse                                                 | Notat                        |
+| --------------- | ----------------------------------------------------------- | ---------------------------- |
+| `rag.py`        | Byggeklossene i RAG-systemet vårt                           |                              |
+| `explore.ipynb` | Jupyter notebook for å jobbe iterativt                      |                              |
+| `main.py`       | Kan brukes for å koble sammen komponenter                   | `uv run main.py`             |
+| `ui.py`         | Grensesnitt i `streamlit`                                   | `uv run streamlit run ui.py` |
+| `clients.py`    | Inneholder klienter for å koble seg mot de ulike tjenestene |
 
 Oppgavene utføres ved å implementere funksjoner i `rag.py` som så skal kobles sammen i `ui.py` til slutt.
 
@@ -45,13 +46,13 @@ Oppgavene utføres ved å implementere funksjoner i `rag.py` som så skal kobles
 
 ### Oppgave 0: Koble opp tjenestene
 
-Vi bruker API-nøkler for å koble oss til tjenestene. Dere får tilsendt en `.env`-fil som dere må legge i roten av prosjektet. Når dette er gjort kan du kjøre `uv run clients.py` for å verifisere at tilkoblingen var vellykket.
+Vi bruker API-nøkler for å koble oss til tjenestene. Dere får tilsendt en `.env`-fil som dere må legge i roten av prosjektet. Når dette er gjort kan du kjøre `uv run test_connection.py` for å verifisere at tilkoblingen var vellykket.
 
 ---
 
 ### Oppgave 1: Hent ut tekst fra et dokument
 
-Målet er å gjøre PDF-en om til ren tekst. Her kan du selv velge om du vil bruke [pypdf](https://pypi.org/project/pypdf/) eller [Document Intelligence](https://learn.microsoft.com/en-us/python/api/overview/azure/ai-documentintelligence-readme?view=azure-python#extract-layout). Førstnevnte er en del enklere og raskere, men sistnevnte er kraftigere. 
+Målet er å gjøre PDF-en om til ren tekst. Her kan du selv velge om du vil bruke [pypdf](https://pypi.org/project/pypdf/) eller [Document Intelligence](https://learn.microsoft.com/en-us/python/api/overview/azure/ai-documentintelligence-readme?view=azure-python#extract-layout). Førstnevnte er en del enklere og raskere, men sistnevnte er kraftigere.
 
 Implementer:
 
@@ -73,13 +74,14 @@ print(text[:1000])
 ### Oppgave 2: Chunk dokumentet
 
 Store språkmodeller og søkeindekser fungerer dårlig på svært store dokumenter. Vi trenger en måte å splitte opp teksten. I tillegg ønsker vi å kunne hente ut kun de mest relevante delene av dokumentet når brukeren stiller et spørsmål.
- 
+
 Implementer:
 
 `chunk(document)`
 
 Målet er å produsere en liste med chunks. Hver chunk skal være en dictionary som inneholder selve teksten pluss tilhørende metadata (f.eks. filnavn)
 For eksempel:
+
 ```
 {
     "document_id": "twoday-personalhandbok",
@@ -123,7 +125,6 @@ create_index(index_name)
 Metoden må inneholde et schema som definerer hva slags innhold hvert dokument (chunk) som lastes opp til indeksen skal inneholde.
 
 ### Nyttige lenker
-
 
 ### Refleksjon
 
@@ -275,6 +276,7 @@ Ta en titt på dokumentasjonen og implementer en ny chunking-metode
 https://learn.microsoft.com/en-us/azure/search/vector-search-how-to-chunk-documents
 
 Man kan for eksempel eksperimentere med
+
 - Ulike chunk sizes
 - Overlap mellom chunks (f.eks. 25%)
 - Semantisk chunking
@@ -308,9 +310,8 @@ NB: For å implementere dette må du kanskje modifisere schema og chunking, samt
 
 Modifiser grensesnittet til å la brukeren laste opp dokumenter, som så blir prosessert og indeksert og gjort tilgjengelig for søk. Legg til muligheten til å velge hvilke dokumenter det søkes i (dette krever at `filterable=True` for dokumentId-feltet i index schema).
 
-
 # Bonus 6: Blob storage for lagring av dokumenter
 
-Koble opp systemet til blob storage, slik at dokumenter lastet opp havner der. Legg til en referanse til blob-en for et gitt dokument i schema i indeksen. Bruk blob storage som "knowledge source" i 
+Koble opp systemet til blob storage, slik at dokumenter lastet opp havner der. Legg til en referanse til blob-en for et gitt dokument i schema i indeksen. Bruk blob storage som "knowledge source" i
 
 Gjør så PDF-en til vises i grensesnittet når man får resultatene (`st.pdf`).
