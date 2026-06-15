@@ -3,12 +3,14 @@
 ## Installasjon
 
 Last ned repo
+
 ```
 git clone https://github.com/tmaregge/twoday-si26-ai-kurs.git
 cd twoday-si26-ai-kurs
 ```
 
 Installer pakker
+
 ```
 uv sync
 ```
@@ -20,10 +22,6 @@ Hvis du ikke har `uv` installert, kan du laste det ned her:
 https://docs.astral.sh/uv/#installation
 
 </details>
-
-Kjør streamlit-frontend:
-```
-uv run streamlit run ui.py
 ```
 
 ## Oppgaver
