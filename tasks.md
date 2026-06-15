@@ -152,6 +152,11 @@ index_chunks(chunks, index_name)
 
 Verifiser at dokumentene finnes i indeksen.
 
+### Nyttige lenker
+
+Her kan du finne metoden for å laste opp dokumenter:
+https://learn.microsoft.com/en-us/python/api/azure-search-documents/azure.search.documents.searchclient?view=azure-python
+
 ---
 
 # Oppgave 5: Bygg søk
