@@ -2,6 +2,11 @@
 
 from clients import *
 
+from os import environ
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 def check_di():
     try:
@@ -14,13 +19,12 @@ def check_oai():
     try:
         client = get_oai_client()
 
-        # cheap API call
-        models = client.models.list()
-        first = next(iter(models.data), None)
+        response = client.responses.create(
+            model=os.environ["OAI_MODEL"],
+            input="Hello"
+        )
 
-        print("✅ OpenAI connected")
-        if first:
-            print("   first model:", first.id)
+        print(f"✅ OpenAI connected. Response: {response.output_text}")
 
     except Exception as e:
         print("❌ OpenAI:", e)
