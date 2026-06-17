@@ -43,23 +43,23 @@ def create_index(index_name: str):
     """
     Create an Azure AI Search index.
     """
+    name = index_name
     fields = [
-        SimpleField(
-            name="chunk_id",
-            type=SearchFieldDataType.String,
-            key=True,
-        ),
-        SimpleField(
-            name="document_id",
-            type=SearchFieldDataType.String,
-            filterable=True,
-        ),
-        SearchableField(
-            name="content",
-            type=SearchFieldDataType.String,
-        ),
+        SimpleField(name="chunk_id", type=SearchFieldDataType.String, key=True),
+        SimpleField(name="document_id", type=SearchFieldDataType.String, filterable=True),
+        SearchableField(name="content", type=SearchFieldDataType.String),
     ]
-    ...
+    cors_options = CorsOptions(allowed_origins=["*"], max_age_in_seconds=60)
+    scoring_profiles = []
+    index = SearchIndex(
+        name=name,
+        fields=fields,
+        scoring_profiles=scoring_profiles,
+        cors_options=cors_options,
+    )
+
+    result = client.create_or_update_index(index)
+    return result
 
 
 def upload_chunks(chunks: list[dict], index_name: str):

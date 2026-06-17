@@ -46,11 +46,17 @@ Oppgavene utføres ved å implementere funksjoner i `rag.py` som så skal kobles
 
 ### Oppgave 0: Koble opp tjenestene
 
-Vi bruker API-nøkler for å koble oss til tjenestene. Dere får tilsendt en `.env`-fil som dere må legge i roten av prosjektet. Når dette er gjort kan du kjøre `uv run test_connection.py` for å verifisere at tilkoblingen var vellykket.
+Vi bruker API-nøkler for å koble oss til tjenestene. Dere får tilsendt en fil med miljøvariabler.
+
+1. Kopier .env-fil til roten av prosjektet
+2. Åpne filen og endre AZURE_SEARCH_INDEX_NAME til "idx-[ditt_navn]"
+3. Kjør `uv run test_connection.py` for å sjekke at ting funker
 
 ### Oppgave 1: Hent ut tekst fra et dokument
 
-Målet er å gjøre PDF-en om til ren tekst. Bruk [pypdf](https://pypi.org/project/pypdf/) for å lese innholdet fra PDF-filen.
+Målet med denne oppgaven er å gjøre en PDF om til ren tekst, slik at vi kan bruke den i søk. Dere får tilsendt Twodays personalhåndbok.
+
+Bruk biblioteket [pypdf](https://pypi.org/project/pypdf/) for å lese innholdet fra PDF-filen.
 
 Implementer:
 
@@ -63,6 +69,10 @@ text = ingest_pypdf(...)
 print(text[:1000])
 ```
 
+#### Refleksjon
+
+Hva slags metadata kan være nyttig å ta vare på?
+
 ### Oppgave 2: Chunk dokumentet
 
 Store språkmodeller og søkeindekser fungerer dårlig på svært store dokumenter. Vi trenger en måte å splitte opp teksten. I tillegg ønsker vi å kunne hente ut kun de mest relevante delene av dokumentet når brukeren stiller et spørsmål.
@@ -74,11 +84,10 @@ Implementer:
 Målet er å produsere en liste med chunks. Hver chunk skal være en dictionary som inneholder selve teksten pluss tilhørende metadata (f.eks. filnavn)
 For eksempel:
 
-```
+```json
 {
     "document_id": "twoday-personalhandbok",
     "chunk_id": "twoday-personalhandbok_1",
-    "page": 1,
     "content": "Personalhåndboken skal gi informasjon og veiledning til ansatte om de forhold som er sentrale i
 ansettelsesforholdet. Håndboken skal sikre en felles plattform og praksis innen de områder som
 beskrives."
@@ -90,20 +99,28 @@ Her er det veldig mange mulige måter å gjøre det på, men jeg anbefaler enkel
 Test:
 
 ```python
-chunks = chunk(document)
+chunks = chunk(document) # Document er det scannede PDF-dokumentet
 
 print(len(chunks))
 print(chunks[0])
 ```
 
+#### Refleksjon
+
+Er det noen flere felter som bør inkluderes?
+
 # Oppgave 3: Opprett en søkeindeks
 
-Opprett en Azure AI Search-indeks.
+Teorioppgave! Med mindre du har gjort noe spennende i de tidligere oppgavene og må modifisere schema-et `;)`
 
-Implementer:
+Undersøk funksjonen `create_index`. Funksjonen oppretter en søkeindeks med følgende schema
 
 ```python
-create_index(index_name)
+    fields = [
+        SimpleField(name="chunk_id", type=SearchFieldDataType.String, key=True),
+        SimpleField(name="document_id", type=SearchFieldDataType.String, filterable=True),
+        SearchableField(name="content", type=SearchFieldDataType.String),
+    ]
 ```
 
 Metoden må inneholde et schema som definerer hva slags innhold hvert dokument (chunk) som lastes opp til indeksen skal inneholde.
