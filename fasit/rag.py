@@ -12,13 +12,13 @@ def chunk(document):
 def create_index(index_name: str):
     ...
 
-def index_chunks(chunks: list[dict], index_name: str):
+def upload_chunks(chunks: list[dict], index_name: str):
     ...
 
 def search(search_text: str, document_id: str = "", top: int = 5):
     ...
 
-def chat(question: str, context: str):
+def generate_answer(question: str, context: str):
     ...
 
 def ask(question: str, document_id: str = ""):

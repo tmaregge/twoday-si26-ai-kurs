@@ -126,14 +126,14 @@ Eksempel:
 
 Hva bør være nøkkelfeltet?
 
-# Oppgave 4: Indekser chunkene
+# Oppgave 4: Last opp chunkene
 
 Last opp chunkene til Azure AI Search.
 
 Implementer:
 
 ```python
-index_chunks(chunks, index_name)
+upload_chunks(chunks, index_name)
 ```
 
 Verifiser at dokumentene finnes i indeksen.
@@ -162,12 +162,12 @@ for result in results:
 
 Skriv ut de mest relevante chunkene.
 
-# Oppgave 6: Generer svar med GPT
+# Oppgave 6: Generer svar
 
 Implementer:
 
 ```python
-chat(question, context)
+generate_answer(question, context)
 ```
 
 Funksjonen tar inn et spørsmål og tilhørende context (søkeresultater) og genererer et svar.
@@ -183,7 +183,7 @@ Lag en prompt som inneholder:
 Eksempel:
 
 ```python
-answer = chat(question, context)
+answer = generate_answer(question, context)
 ```
 
 ### Nyttige lenker
