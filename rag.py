@@ -74,6 +74,16 @@ def index_chunks(chunks: list[dict], index_name: str):
     """
     ...
 
+def recreate_index(index_name: str):
+    """
+    In case you need to reset the index, this function deletes and recreates it.
+    """
+    try:
+        search_idx_client.delete_index(index_name)
+    except Exception:
+        pass
+
+    return create_index(index_name)
 
 def search(search_text: str, document_id: str = "", top: int = 5):
     """
