@@ -52,15 +52,11 @@ Vi bruker API-nøkler for å koble oss til tjenestene. Dere får tilsendt en `.e
 
 ### Oppgave 1: Hent ut tekst fra et dokument
 
-Målet er å gjøre PDF-en om til ren tekst. Her kan du selv velge om du vil bruke [pypdf](https://pypi.org/project/pypdf/) eller [Document Intelligence](https://learn.microsoft.com/en-us/python/api/overview/azure/ai-documentintelligence-readme?view=azure-python#extract-layout). Førstnevnte er en del enklere og raskere, men sistnevnte er kraftigere.
+Målet er å gjøre PDF-en om til ren tekst. Bruk [pypdf](https://pypi.org/project/pypdf/) for å lese innholdet fra PDF-filen.
 
 Implementer:
 
 `ingest_pypdf()`
-
-eller
-
-`ingest_di()`
 
 Test i notebook:
 
@@ -315,7 +311,17 @@ NB: For å implementere dette må du kanskje modifisere schema og chunking, samt
 
 Modifiser grensesnittet til å la brukeren laste opp dokumenter, som så blir prosessert og indeksert og gjort tilgjengelig for søk. Legg til muligheten til å velge hvilke dokumenter det søkes i (dette krever at `filterable=True` for dokumentId-feltet i index schema).
 
-# Bonus 6: Blob storage for lagring av dokumenter
+# Bonus 6: Bruk Document Intelligence for tekstekstraksjon
+
+Bytt ut `ingest_pypdf()` med [Document Intelligence](https://learn.microsoft.com/en-us/python/api/overview/azure/ai-documentintelligence-readme?view=azure-python#extract-layout) for kraftigere tekstekstraksjon, spesielt nyttig for scannede dokumenter eller komplekse layouter.
+
+Implementer:
+
+`ingest_di()`
+
+---
+
+# Bonus 7: Blob storage for lagring av dokumenter
 
 Koble opp systemet til blob storage, slik at dokumenter lastet opp havner der. Legg til en referanse til blob-en for et gitt dokument i schema i indeksen. Bruk blob storage som "knowledge source" i
 
