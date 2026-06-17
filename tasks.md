@@ -48,8 +48,6 @@ Oppgavene utføres ved å implementere funksjoner i `rag.py` som så skal kobles
 
 Vi bruker API-nøkler for å koble oss til tjenestene. Dere får tilsendt en `.env`-fil som dere må legge i roten av prosjektet. Når dette er gjort kan du kjøre `uv run test_connection.py` for å verifisere at tilkoblingen var vellykket.
 
----
-
 ### Oppgave 1: Hent ut tekst fra et dokument
 
 Målet er å gjøre PDF-en om til ren tekst. Bruk [pypdf](https://pypi.org/project/pypdf/) for å lese innholdet fra PDF-filen.
@@ -64,8 +62,6 @@ Test i notebook:
 text = ingest_pypdf(...)
 print(text[:1000])
 ```
-
----
 
 ### Oppgave 2: Chunk dokumentet
 
@@ -100,14 +96,6 @@ print(len(chunks))
 print(chunks[0])
 ```
 
-### Nyttige lenker:
-
-https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
-
-https://github.com/Azure/azure-search-vector-samples/tree/main/demo-python
-
----
-
 # Oppgave 3: Opprett en søkeindeks
 
 Opprett en Azure AI Search-indeks.
@@ -122,6 +110,10 @@ Metoden må inneholde et schema som definerer hva slags innhold hvert dokument (
 
 ### Nyttige lenker
 
+https://learn.microsoft.com/en-us/python/api/overview/azure/search-documents-readme?view=azure-python#creating-an-index
+
+https://github.com/Azure/azure-search-vector-samples/tree/main/demo-python
+
 ### Refleksjon
 
 Hvilke felter trenger vi?
@@ -133,8 +125,6 @@ Eksempel:
 - content
 
 Hva bør være nøkkelfeltet?
-
----
 
 # Oppgave 4: Indekser chunkene
 
@@ -152,8 +142,6 @@ Verifiser at dokumentene finnes i indeksen.
 
 Her kan du finne metoden for å laste opp dokumenter:
 https://learn.microsoft.com/en-us/python/api/azure-search-documents/azure.search.documents.searchclient?view=azure-python
-
----
 
 # Oppgave 5: Bygg søk
 
@@ -173,8 +161,6 @@ for result in results:
 ```
 
 Skriv ut de mest relevante chunkene.
-
----
 
 # Oppgave 6: Generer svar med GPT
 
@@ -203,8 +189,6 @@ answer = chat(question, context)
 ### Nyttige lenker
 
 https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/responses?tabs=python#generate-a-text-response
-
----
 
 # Oppgave 7: Sett alt sammen
 
@@ -247,8 +231,6 @@ Etter denne oppgaven har vi en komplett RAG-løsning!
 
 Nå som vi har det grunnleggende systemet på plass kan vi jobbe med å forbedre det. Hva du gjør er opp til deg. Under er noen eksempler på ting man kan gjøre.
 
----
-
 # Bonus 1: Bygg et grensesnitt
 
 Bruk Streamlit til å lage et enkelt chat-grensesnitt.
@@ -264,8 +246,6 @@ Vis:
 - spørsmål
 - svar
 - hvilke chunks som ble brukt
-
----
 
 # Bonus 2: Legg til vektorsøk
 
@@ -287,8 +267,6 @@ Man kan for eksempel eksperimentere med
 Hvilke endringer gir størst effekt på kvaliteten?
 
 Hvorfor?
-
----
 
 # Bonus 4: Legg til kilder
 
@@ -318,8 +296,6 @@ Bytt ut `ingest_pypdf()` med [Document Intelligence](https://learn.microsoft.com
 Implementer:
 
 `ingest_di()`
-
----
 
 # Bonus 7: Blob storage for lagring av dokumenter
 
