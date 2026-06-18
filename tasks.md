@@ -123,7 +123,11 @@ Undersøk funksjonen `create_index`. Funksjonen oppretter en søkeindeks med fø
     ]
 ```
 
-Metoden må inneholde et schema som definerer hva slags innhold hvert dokument (chunk) som lastes opp til indeksen skal inneholde.
+NB: Husk å kalle metoden med index-navnet ditt! For eksempel:
+
+```
+create_index("idx-torstein")
+```
 
 ### Nyttige lenker
 
