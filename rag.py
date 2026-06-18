@@ -27,6 +27,8 @@ def ingest_di(pdf_path: str, out_path: str = "") -> AnalyzeResult:
     """
     Extract document structure and content using Azure Document Intelligence.
 
+    Hint: Use `di_client` from clients.py (DocumentIntelligenceClient).
+
     Args:
         pdf_path: Path to the PDF file.
         out_path: Optional path for saving the analysis result.
@@ -79,6 +81,8 @@ def upload_chunks(chunks: list[dict], index_name: str):
 
     Each chunk becomes a searchable document in the index.
 
+    Hint: Use `search_client` from clients.py (SearchClient).
+
     Args:
         chunks: List of chunk dictionaries.
         index_name: Name of the target index.
@@ -100,6 +104,8 @@ def search(search_text: str, document_id: str = "", top: int = 5):
     """
     Search for relevant chunks.
 
+    Hint: Use `search_client` from clients.py (SearchClient).
+
     Args:
         search_text: User query.
         document_id: Optional filter for a specific document.
@@ -114,6 +120,8 @@ def search(search_text: str, document_id: str = "", top: int = 5):
 def generate_answer(question: str, context: str):
     """
     Generate an answer using a language model.
+
+    Hint: Use `oai_client` from clients.py (OpenAI)
 
     The prompt should include:
         - A system prompt
@@ -147,6 +155,8 @@ def ask(question: str, document_id: str = ""):
 def embed(text):
     """
     Generate a vector embedding for text.
+
+    Hint: Use `oai_client` from clients.py (OpenAI). Use model="text-embedding-3-large".
 
     Args:
         text: Text to embed.
