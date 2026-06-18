@@ -153,7 +153,7 @@ Implementer:
 upload_chunks(chunks, index_name)
 ```
 
-Verifiser at dokumentene finnes i indeksen.
+Verifiser at dokumentene finnes i indeksen. Du kan sjekke via kode, eller spørre meg om å sjekke i Azure.
 
 ### Nyttige lenker
 
