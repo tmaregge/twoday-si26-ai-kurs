@@ -1,7 +1,18 @@
-from src.retrieval import search
-import streamlit as st
-from src.chat import ask
 import random
+import sys
+import importlib.util
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent)) # find clients.py
+
+# Load fasit/rag.py explicitly to avoid picking up the outer rag.py
+_spec = importlib.util.spec_from_file_location("rag", Path(__file__).parent / "rag.py")
+_rag = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_rag)
+search = _rag.search
+ask = _rag.ask
+
+import streamlit as st
 
 blurbs = [
     "Tenker",
