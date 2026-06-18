@@ -1,3 +1,14 @@
+from azure.ai.documentintelligence.models import AnalyzeResult
+from azure.search.documents.indexes.models import (
+    CorsOptions,
+    SearchableField,
+    SearchFieldDataType,
+    SearchIndex,
+    SimpleField,
+)
+from clients import search_idx_client as client, search_idx_client, search_client, oai_client
+
+
 def ingest_pypdf(pdf_path: str, out_path: str = "") -> str:
     """
     Extract text from a PDF using pypdf.
