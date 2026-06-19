@@ -254,6 +254,7 @@ Nå som vi har det grunnleggende systemet på plass kan vi jobbe med å forbedre
 
 # Bonus 1: Bygg et grensesnitt
 
+[Streamlit](https://docs.streamlit.io/) er et bibliotek for å lage datadrevne grensesnitt i Python.
 Bruk Streamlit til å lage et enkelt chat-grensesnitt.
 
 Start applikasjonen:
@@ -282,12 +283,6 @@ Man kan for eksempel eksperimentere med
 - Ulike chunk sizes
 - Overlap mellom chunks (f.eks. 25%)
 - Semantisk chunking
-
-### Refleksjon
-
-Hvilke endringer gir størst effekt på kvaliteten?
-
-Hvorfor?
 
 # Bonus 4: Legg til kilder
 
