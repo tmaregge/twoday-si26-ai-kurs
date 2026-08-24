@@ -5,8 +5,8 @@
 Last ned repo
 
 ```
-git clone https://github.com/tmaregge/twoday-si26-ai-kurs.git
-cd twoday-si26-ai-kurs
+git clone https://github.com/tmaregge/twoday-nk26-ai-kurs.git
+cd twoday-nk26-ai-kurs
 ```
 
 Installer pakker
@@ -22,7 +22,6 @@ Hvis du ikke har `uv` installert, kan du laste det ned her:
 https://docs.astral.sh/uv/#installation
 
 </details>
-```
 
 ## Oppgaver
 

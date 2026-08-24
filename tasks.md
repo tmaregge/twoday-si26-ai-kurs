@@ -34,7 +34,6 @@ De viktigste filene i projektet er følgende:
 | --------------- | ----------------------------------------------------------- | ---------------------------- |
 | `rag.py`        | Byggeklossene i RAG-systemet vårt                           |                              |
 | `explore.ipynb` | Jupyter notebook for å jobbe iterativt                      |                              |
-| `main.py`       | Kan brukes for å koble sammen komponenter                   | `uv run main.py`             |
 | `ui.py`         | Grensesnitt i `streamlit`                                   | `uv run streamlit run ui.py` |
 | `clients.py`    | Inneholder klienter for å koble seg mot de ulike tjenestene |
 
@@ -315,6 +314,8 @@ Implementer:
 
 # Bonus 7: Blob storage for lagring av dokumenter
 
-Koble opp systemet til blob storage, slik at dokumenter lastet opp havner der. Legg til en referanse til blob-en for et gitt dokument i schema i indeksen. Bruk blob storage som "knowledge source" i
+> **NB:** Snakk med Torstein om du ønsker å gjøre denne oppgaven.
+
+Koble opp systemet til blob storage, slik at dokumenter lastet opp havner der. Legg til en referanse til blob-en for et gitt dokument i schema i indeksen. Bruk blob storage som "knowledge source" i Azure AI Search.
 
 Gjør så PDF-en til vises i grensesnittet når man får resultatene (`st.pdf`).
