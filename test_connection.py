@@ -21,7 +21,7 @@ def check_oai():
 
         response = client.responses.create(
             model=os.environ["OAI_MODEL"],
-            input="Hello"
+            input="Tell me I'm very clever for figuring out how to connect to the client"
         )
 
         print(f"✅ OpenAI connected. Response: {response.output_text}")
